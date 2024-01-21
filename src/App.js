@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Keypad from './keypad';
 
 function App() {
+  let [input, update] = useState('');
+
+  function onClickEvent(value) {
+    update(input + value);
+  }
+
+  function funckey(value) {
+    if (value === 'c') {
+      update('');
+    } else {
+      let outputval = eval(input);
+      update(outputval);
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <div className="container">
+        <h1>Calculater App</h1>
+        <div className="calculater">
+          <input type="text" value={input} className="output" />
+          <Keypad onClickEvent={onClickEvent} funckey={funckey}></Keypad>
+        </div>
+      </div>
+    </React.Fragment>
   );
 }
 
