@@ -22,7 +22,7 @@ function App() {
       <div className="container">
         <h1>Calculater App</h1>
         <div className="calculater">
-          <input type="text" value={input} className="output" />
+          <input type="text" value={input} readOnly className="output" />
           <Keypad onClickEvent={onClickEvent} funckey={funckey}></Keypad>
         </div>
       </div>
